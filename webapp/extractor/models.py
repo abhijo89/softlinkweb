@@ -10,30 +10,31 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class Category(BaseModel):
-    name = models.CharField(max_length=100)
-
-
 class NewsPaper(BaseModel):
-    url = models.URLField(max_length=200)
+    url = models.URLField(max_length=200, unique=True)
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey('Category')
     is_enable = models.BooleanField(default=False)
 
 
-class Author(BaseModel):
+class Category(BaseModel):
     name = models.CharField(max_length=100)
+    article = models.ForeignKey(Article)
 
 
 class Article(BaseModel):
 
     news_paper = models.ForeignKey(NewsPaper)
-    original_url = models.URLField(db_index=True)
+    original_url = models.URLField(db_index=True, unique=True)
     title = models.CharField(max_length=240, null=True)
     summary = models.TextField(null=True)
     text = models.TextField(null=True)
     is_published = models.BooleanField(default=False)
-    author = models.ForeignKey(Author, null=True)
+
+
+class Author(BaseModel):
+    name = models.CharField(max_length=100)
+    article = models.ForeignKey(Article)
 
 
 class Image(BaseModel):
