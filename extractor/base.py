@@ -8,6 +8,15 @@ class AsyncConnection(object):
     pass
 
 
+class Extractor(object):
+
+    def __init__(self):
+        pass
+
+    def get_url_from_db(self):
+        pass
+
+
 class BaseExtractor(object):
 
     def __int__(self):
@@ -15,3 +24,4 @@ class BaseExtractor(object):
 
     def start(self):
         pass
+
