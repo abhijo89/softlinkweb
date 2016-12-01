@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'softlinkweb',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
     }
 }
 
